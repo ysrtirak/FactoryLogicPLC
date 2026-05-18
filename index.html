@@ -3,63 +3,316 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Learn PLC</title>
-    <meta name="description" content="Official website for Learn PLC, a mobile and tablet learning simulator for PLC concepts, ladder logic, tags, components, and guided industrial automation practice." />
+    <title>FactoryLogic PLC</title>
+    <meta name="description" content="Official website for FactoryLogic PLC, a mobile and tablet learning simulator for PLC concepts, ladder logic, tags, industrial components, and guided automation practice." />
+    <meta name="theme-color" content="#0b1720" />
+    <meta property="og:title" content="FactoryLogic PLC" />
+    <meta property="og:description" content="Official website for FactoryLogic PLC, a mobile and tablet learning simulator for PLC concepts, ladder logic, tags, industrial components, and guided automation practice." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ysrtirak.github.io/FactoryLogicPLC/" />
     <link rel="canonical" href="https://ysrtirak.github.io/FactoryLogicPLC/" />
     <link rel="stylesheet" href="./assets/site.css" />
   </head>
-  <body>
+  <body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="./" aria-label="Learn PLC home">
-        <span class="brand-mark">PLC</span>
+      <a class="brand" href="./" aria-label="FactoryLogic PLC home">
+        <span class="brand-mark" aria-hidden="true">FL</span>
         <span>
-          <strong>Learn PLC</strong>
-          <small>PLC learning simulator</small>
+          <strong>FactoryLogic PLC</strong>
+          <small>PLC learning and simulation</small>
         </span>
       </a>
-      <nav aria-label="Primary navigation">
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#product">Product</a>
+        <a href="#learning">Learning</a>
         <a href="./support/">Support</a>
         <a href="./privacy/">Privacy</a>
-        <a href="./account-deletion/">Account deletion</a>
-        <a href="./terms/">Terms</a>
+        <a href="./account-deletion/">Delete account</a>
       </nav>
     </header>
-    <main>
-      <section class="hero">
-        <div>
-          <p class="eyebrow">Mobile PLC learning simulator</p>
-          <h1>Learn PLC</h1>
-          <p class="hero-copy">Structured PLC lessons, ladder logic practice, tag mapping, industrial components, and guided simulation for phones and tablets.</p>
-          <div class="actions">
-            <a class="button-primary" href="./support/">Get support</a>
+    <main id="main">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-copy-wrap">
+          <p class="eyebrow">Mobile and tablet PLC simulator</p>
+          <h1 id="hero-title">FactoryLogic PLC</h1>
+          <p class="hero-copy">Learn PLC fundamentals, ladder logic, tag mapping, and industrial control concepts through structured lessons and safe simulation exercises.</p>
+          <div class="badge-row"><span>PLC fundamentals</span><span>Ladder logic</span><span>Tag mapping</span><span>Guided simulation</span></div>
+          <div class="hero-actions">
+            <a class="button-primary" href="mailto:factorylogicplc@gmail.com?subject=FactoryLogic+PLC+support+request&body=Hello+FactoryLogic+PLC+team%2C%0A%0AI+need+help+with%3A%0A%0AApp+version%3A%0ADevice+model%3A%0AOperating+system%3A%0ADescription%3A%0A%0APlease+do+not+include+passwords%2C+private+keys%2C+service+account+files%2C+or+identity+documents.">Contact support</a>
             <a class="button-secondary" href="./privacy/">Read privacy policy</a>
           </div>
         </div>
-      </section>
-      <section class="content-section">
-        <div class="section-inner">
-          <h2>What the app does</h2>
-          <p>Learn PLC helps learners build PLC fundamentals through structured chapters and safe simulation exercises. It is designed for education, practice, and concept reinforcement.</p>
-          
-          <div class="card-grid"><article class="card"><h3>Ladder logic practice</h3><p>Build and inspect ladder logic patterns in guided learning scenarios.</p></article><article class="card"><h3>Tags and mappings</h3><p>Connect simulated components to PLC-style tags and understand signal flow.</p></article><article class="card"><h3>Industrial components</h3><p>Practice with common controls, indicators, motors, sensors, timers, and counters.</p></article></div>
+        <div class="hero-visual" role="img" aria-label="FactoryLogic PLC learning preview">
+          <div class="device-frame">
+            <div class="device-topbar">
+              <span></span><span></span><span></span>
+              <strong>Run Mode</strong>
+            </div>
+            <div class="runtime-grid">
+              <div class="ladder-card">
+                <div class="rail"></div>
+                <div class="rung">
+                  <span>START</span>
+                  <span class="contact"></span>
+                  <span>STOP</span>
+                  <span class="contact nc"></span>
+                  <span class="coil">MOTOR</span>
+                </div>
+                <div class="rung energized">
+                  <span>LEVEL</span>
+                  <span class="contact"></span>
+                  <span>TIMER</span>
+                  <span class="block">TON</span>
+                  <span class="coil">PUMP</span>
+                </div>
+              </div>
+              <div class="tag-panel">
+                <span class="tag-chip input">I0.0 START</span>
+                <span class="tag-chip input">I0.1 STOP</span>
+                <span class="tag-chip output">Q0.0 MOTOR</span>
+                <span class="tag-chip output">Q0.1 PUMP</span>
+              </div>
+              <div class="sim-panel">
+                <div class="indicator on"></div>
+                <div class="motor-symbol"></div>
+                <div class="tank-symbol"><span></span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <section class="content-section">
+      <section class="content-section section-metricGrid section-dark" id="review">
         <div class="section-inner">
-          <h2>Store review links</h2>
-          <p>This website hosts the public pages needed for app review, including support, privacy, account deletion, and terms information.</p>
-          <ul><li>Privacy Policy URL: https://ysrtirak.github.io/FactoryLogicPLC/privacy/</li><li>Support URL: https://ysrtirak.github.io/FactoryLogicPLC/support/</li><li>Account deletion URL: https://ysrtirak.github.io/FactoryLogicPLC/account-deletion/</li><li>Terms URL: https://ysrtirak.github.io/FactoryLogicPLC/terms/</li></ul>
-          
+          <div class="section-heading">
+            <p class="eyebrow">Store review ready</p>
+            <h2 id="review-title">Clear public pages for users and app reviewers.</h2>
+            <p>The website keeps product, support, privacy, account deletion, and terms information discoverable without requiring sign-in or JavaScript.</p>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><strong>4</strong><span>public review links</span></div>
+            <div class="metric"><strong>0</strong><span>required login screens</span></div>
+            <div class="metric"><strong>1</strong><span>privacy contact email</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-featureGrid" id="product">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Product</p>
+            <h2 id="product-title">A focused learning workspace for automation fundamentals.</h2>
+            <p>FactoryLogic PLC teaches the relationships between field devices, tags, PLC logic, and simulated machine behavior. It is built for learning, not for validating live industrial systems.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <p class="card-kicker">Lessons</p>
+              <h3>Structured PLC academy</h3>
+              <p>Progress through fundamentals, hardware, I/O, sensors, actuators, scan cycle, timers, counters, analog signals, communication, diagnostics, and integrated scenarios.</p>
+              
+            </article>
+            <article class="card">
+              <p class="card-kicker">Programming</p>
+              <h3>Ladder logic practice</h3>
+              <p>Build rung-based logic with contacts, coils, timers, counters, comparisons, set/reset patterns, and guided mission checks.</p>
+              
+            </article>
+            <article class="card">
+              <p class="card-kicker">Runtime</p>
+              <h3>Tag and signal thinking</h3>
+              <p>Create PLC-style tags, map them to simulated components, inspect runtime state, and understand how inputs, logic, and outputs connect.</p>
+              
+            </article>
+            <article class="card">
+              <p class="card-kicker">Simulation</p>
+              <h3>Industrial components</h3>
+              <p>Practice with push buttons, stop buttons, lamps, motors, pumps, tanks, sensors, conveyors, doors, alarms, and control scenarios.</p>
+              
+            </article>
+            <article class="card">
+              <p class="card-kicker">Feedback</p>
+              <h3>Guided troubleshooting</h3>
+              <p>Learn from validation feedback that explains what failed, why it matters, and the smallest next fix to try.</p>
+              
+            </article>
+            <article class="card">
+              <p class="card-kicker">Community</p>
+              <h3>Peer learning layer</h3>
+              <p>Ask and answer automation learning questions in a moderated community designed for education rather than engineering approval.</p>
+              
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-split section-soft" id="workflow">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2 id="workflow-title">From field signal to logic result.</h2>
+            <p>The app is organized around the real PLC mental model: inputs are read, logic is evaluated, outputs are committed, and the simulated scene reflects the result.</p>
+          </div>
+          <div class="split-layout">
+            <div>
+              <ul><li>Start with a guided lesson or mission.</li><li>Create or select tags with direction and data type.</li><li>Build ladder logic using the lesson constraints.</li><li>Map simulated component terminals to tags.</li><li>Run the simulation and inspect behavior safely.</li></ul>
+              <div class="section-actions">
+            <a class="button-secondary" href="./support/">View support options</a>
+          </div>
+            </div>
+            <div class="visual-panel scan-cycle" role="img" aria-label="PLC scan cycle diagram">
+              <span>Input read</span>
+              <span>Logic solve</span>
+              <span>Output commit</span>
+              <span>Scene update</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-learningMap" id="learning">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Learning path</p>
+            <h2 id="learning-title">A complete PLC learning map, not a random chapter list.</h2>
+            <p>The curriculum is designed to move from concepts to component behavior, then into programming and integrated simulation.</p>
+          </div>
+          <div class="learning-map">
+            <article class="learning-group">
+                <span class="learning-index">01</span>
+                <h3>Foundation</h3>
+                <p>Understand what a PLC does and how industrial automation systems are organized.</p>
+                <ul><li>PLC fundamentals</li><li>Relay logic concepts</li><li>Inputs, logic, outputs</li></ul>
+              </article>
+            <article class="learning-group">
+                <span class="learning-index">02</span>
+                <h3>Hardware and signals</h3>
+                <p>Learn how physical devices connect to PLC modules and become usable tags.</p>
+                <ul><li>CPU, power supply, I/O modules</li><li>PNP, NPN, 24 VDC, commons</li><li>Digital and analog signals</li></ul>
+              </article>
+            <article class="learning-group">
+                <span class="learning-index">03</span>
+                <h3>Control logic</h3>
+                <p>Build practical control patterns and learn how scan-cycle execution affects behavior.</p>
+                <ul><li>Start-stop and interlocks</li><li>Timers, counters, comparisons</li><li>Fault latches and resets</li></ul>
+              </article>
+            <article class="learning-group">
+                <span class="learning-index">04</span>
+                <h3>Integrated practice</h3>
+                <p>Apply the model to simulated systems where components, tags, ladder logic, and feedback meet.</p>
+                <ul><li>Conveyors</li><li>Tank filling</li><li>Door interlocks</li><li>Alarm and fault logic</li></ul>
+              </article>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-split" id="systems">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Simulation model</p>
+            <h2 id="systems-title">The app keeps learning, logic, tags, and scene behavior decoupled.</h2>
+            <p>FactoryLogic PLC is designed around clear boundaries: lessons explain the goal, tags represent user-owned signals, ladder logic solves control behavior, and simulation components render the result.</p>
+          </div>
+          <div class="split-layout">
+            <div>
+              <ul><li>Learning content guides the user without acting as runtime logic.</li><li>Tags remain user-owned and separate from component templates.</li><li>Component mappings connect terminal behavior to selected tags.</li><li>Runtime state is visible so learners can reason about cause and effect.</li></ul>
+              
+            </div>
+            <div class="visual-panel signal-flow" role="img" aria-label="Signal flow diagram">
+              <span>Lesson</span>
+              <span>Tags</span>
+              <span>Ladder</span>
+              <span>Runtime</span>
+              <span>Simulation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-callout section-warning" id="safety">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Safety scope</p>
+            <h2 id="safety-title">Educational simulator only.</h2>
+            <p>FactoryLogic PLC is built for learning and practice. It is not certified engineering software and must not be used to validate real machinery, safety circuits, commissioning plans, or production PLC programs.</p>
+          </div>
+          <div class="callout-box">
+            <strong>Do not use the app for real machine approval.</strong>
+            <p>Simulation results and lesson examples are instructional. Real industrial control systems require qualified engineering review, safety validation, commissioning procedures, and applicable standards.</p>
+            
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-linkGrid" id="store-links">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Store links</p>
+            <h2 id="store-links-title">Direct public URLs for app review.</h2>
+            <p>These pages are intentionally reachable without authentication and are suitable for App Store Connect and Play Console metadata fields.</p>
+          </div>
+          <div class="link-grid">
+            <a class="link-card" href="./privacy/">
+                <strong>Privacy Policy URL</strong>
+                <span>Public privacy policy with contact, data categories, retention, deletion, and security handling.</span>
+              </a>
+            <a class="link-card" href="./support/">
+                <strong>Support URL</strong>
+                <span>Support contact information and clear user guidance for help requests.</span>
+              </a>
+            <a class="link-card" href="./account-deletion/">
+                <strong>Account deletion URL</strong>
+                <span>A visible pathway to request account and associated data deletion outside the app.</span>
+              </a>
+            <a class="link-card" href="./terms/">
+                <strong>Terms URL</strong>
+                <span>Educational use, acceptable use, community conduct, and warranty scope.</span>
+              </a>
+          </div>
+        </div>
+      </section>
+      <section class="content-section section-contactPanel section-dark" id="contact">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Need help or privacy support?</h2>
+            <p>Use the dedicated email address for app support, privacy questions, account deletion requests, and store review contact.</p>
+          </div>
+          <div class="contact-panel">
+            <div>
+              <p class="contact-label">Contact email</p>
+              <a class="contact-email" href="mailto:factorylogicplc@gmail.com">factorylogicplc@gmail.com</a>
+              <p>Please do not send passwords, private keys, service account files, identity documents, or screenshots containing sensitive personal information.</p>
+            </div>
+            <div class="contact-actions">
+            <a class="button-primary" href="mailto:factorylogicplc@gmail.com?subject=FactoryLogic+PLC+support+request&body=Hello+FactoryLogic+PLC+team%2C%0A%0AI+need+help+with%3A%0A%0AApp+version%3A%0ADevice+model%3A%0AOperating+system%3A%0ADescription%3A%0A%0APlease+do+not+include+passwords%2C+private+keys%2C+service+account+files%2C+or+identity+documents.">Email support</a>
+            <a class="button-secondary" href="./account-deletion/">Request account deletion</a>
+          </div>
+          </div>
         </div>
       </section>
     </main>
     <footer class="site-footer">
-      <p>Learn PLC is an educational simulator and is not certified for commissioning, industrial safety validation, or real-world machine control.</p>
-      <div>
-        <a href="./support/">Support</a>
-        <a href="./privacy/">Privacy</a>
-        <a href="./account-deletion/">Account deletion</a>
-        <a href="./terms/">Terms</a>
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">FL</span>
+        <div>
+          <strong>FactoryLogic PLC</strong>
+          <p>FactoryLogic PLC is an educational simulator. It is not certified for commissioning, industrial safety validation, or real-world machine control.</p>
+          <a href="mailto:factorylogicplc@gmail.com">factorylogicplc@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-groups">
+        <div>
+            <h2>Product</h2>
+            <a href="#product">Features</a>
+            <a href="#learning">Learning path</a>
+            <a href="#safety">Safety scope</a>
+          </div>
+        <div>
+            <h2>Support</h2>
+            <a href="./support/">Support center</a>
+            <a href="mailto:factorylogicplc@gmail.com?subject=FactoryLogic+PLC+support+request&body=Hello+FactoryLogic+PLC+team%2C%0A%0AI+need+help+with%3A%0A%0AApp+version%3A%0ADevice+model%3A%0AOperating+system%3A%0ADescription%3A%0A%0APlease+do+not+include+passwords%2C+private+keys%2C+service+account+files%2C+or+identity+documents.">Email support</a>
+            <a href="https://github.com/ysrtirak/FactoryLogicPLC">Public website repo</a>
+          </div>
+        <div>
+            <h2>Legal</h2>
+            <a href="./privacy/">Privacy policy</a>
+            <a href="./account-deletion/">Account deletion</a>
+            <a href="./terms/">Terms</a>
+          </div>
       </div>
     </footer>
   </body>
