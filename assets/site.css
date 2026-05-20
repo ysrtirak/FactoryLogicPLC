@@ -560,6 +560,12 @@ h3 {
   background: linear-gradient(180deg, var(--app-page-top), var(--app-page-bottom));
   color: var(--app-chrome-fg);
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-screen .app-page {
+  flex: 1 1 auto;
 }
 
 .app-statusbar {
@@ -741,7 +747,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 6px;
-  margin: 0 18px;
+  margin: 0 14px;
   min-height: 36px;
 }
 .ladder-rung + .ladder-rung { margin-top: 10px; }
@@ -777,18 +783,23 @@ h3 {
   align-items: center;
   justify-content: center;
   min-height: 28px;
-  padding: 4px 9px;
+  padding: 4px 8px;
   border-radius: 7px;
   background: #0a1626;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--app-chrome-fg);
+  white-space: nowrap;
+  /* Override the global overflow-wrap: anywhere that would split words like
+     START → STAR/T inside narrow rung cells. */
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .ladder-contact {
   border: 1.5px solid #355c84;
-  min-width: 56px;
+  min-width: 50px;
   position: relative;
 }
 
@@ -820,7 +831,7 @@ h3 {
 }
 
 .ladder-coil {
-  min-width: 60px;
+  min-width: 54px;
   border: 1.5px solid #355c84;
   border-radius: 999px;
   background: #0a1626;
@@ -886,6 +897,12 @@ h3 {
   font-weight: 600;
 }
 
+.app-nav-item svg,
+.app-nav-item small {
+  position: relative;
+  z-index: 1;
+}
+
 .app-nav-item svg {
   width: 22px; height: 22px;
 }
@@ -900,21 +917,25 @@ h3 {
   color: var(--app-chrome-fg);
 }
 
+.app-nav-item.is-active svg {
+  color: #ffffff;
+}
+
 .app-nav-pill {
   position: absolute;
   top: 4px;
-  width: 50px; height: 24px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.4);
+  width: 56px; height: 28px;
   border-radius: var(--radius-pill);
   background: var(--app-nav-active);
-  opacity: 0.95;
-  z-index: -1;
-  box-shadow: 0 0 18px rgba(31,157,116,0.5);
-  animation: navPillIn 0.6s ease 0.2s both;
+  opacity: 0;
+  box-shadow: 0 0 18px rgba(31, 157, 116, 0.55);
+  animation: navPillIn 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) 0.25s forwards;
 }
 
 @keyframes navPillIn {
-  0%   { transform: scale(0.4); opacity: 0; }
-  100% { transform: scale(1);   opacity: 0.95; }
+  to { transform: translateX(-50%) scale(1); opacity: 0.95; }
 }
 
 /* ============ 7. Sections / grids / cards ============ */
@@ -1095,7 +1116,9 @@ ul li::after {
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
 }
 
-.visual-panel span {
+/* Scoped only to scan-cycle/signal-flow so app-mockup spans aren't affected. */
+.visual-panel.scan-cycle span,
+.visual-panel.signal-flow span {
   position: relative;
   display: inline-flex; align-items: center;
   border: 1px solid var(--accent-tint-2);
@@ -1106,8 +1129,301 @@ ul li::after {
   font-size: 13px; font-weight: 700;
 }
 
-.visual-panel span + span::before {
+.visual-panel.scan-cycle span + span::before,
+.visual-panel.signal-flow span + span::before {
   content: "→"; margin: 0 12px 0 -2px; color: var(--muted); font-weight: 700;
+}
+
+/* ---- App mockup cards (drive quiz, community Q&A) ---- */
+
+.visual-panel.mockup {
+  border: 1px solid var(--app-panel-border);
+  border-radius: 18px;
+  padding: 22px;
+  background:
+    radial-gradient(420px 220px at 100% 0%, rgba(56, 189, 248, 0.10), transparent 60%),
+    linear-gradient(180deg, var(--app-panel-start), var(--app-panel-end));
+  color: var(--app-chrome-fg);
+  box-shadow: 0 30px 60px -30px rgba(7, 17, 28, 0.75),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.visual-panel.mockup h3 {
+  color: var(--app-chrome-fg);
+  letter-spacing: -0.015em;
+}
+
+/* ---- Drive quiz mockup ---- */
+
+.mockup-drive .mockup-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mockup-drive .mockup-chapter {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--app-sky);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.mockup-drive .mockup-group {
+  color: var(--app-panel-sub);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mockup-drive .mockup-eyebrow {
+  margin: 0 0 8px;
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mockup-drive .mockup-question {
+  margin: 0 0 16px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.mockup-drive .mockup-choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.mockup-drive .mockup-choices li {
+  margin: 0;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--app-panel-border);
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+/* Override the global `ul li::before/::after` checkmark rule. */
+.mockup-drive .mockup-choices li::before,
+.mockup-drive .mockup-choices li::after {
+  content: none;
+}
+
+.mockup-drive .mockup-bullet {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid #4a6280;
+  background: transparent;
+}
+
+.mockup-drive .mockup-choice-text {
+  color: #d8e2ee;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.mockup-drive .mockup-tag {
+  display: inline-flex; align-items: center;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(34, 197, 94, 0.18);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.mockup-drive .mockup-choice.is-correct {
+  border-color: rgba(34, 197, 94, 0.55);
+  background: rgba(34, 197, 94, 0.10);
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.18) inset;
+}
+
+.mockup-drive .mockup-choice.is-correct .mockup-bullet {
+  border-color: #22c55e;
+  background: radial-gradient(circle, #22c55e 0 45%, transparent 45%);
+}
+
+.mockup-drive .mockup-choice.is-correct .mockup-choice-text {
+  color: #ecfdf5;
+}
+
+.mockup-drive .mockup-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px 14px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mockup-drive .mockup-progress {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.mockup-drive .mockup-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--app-sky), #22c55e);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+  animation: progressFillDrive 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+}
+@keyframes progressFillDrive {
+  to { width: 75%; }
+}
+
+.mockup-drive .mockup-progress-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--app-panel-sub);
+}
+
+.mockup-drive .mockup-cta {
+  display: inline-flex; align-items: center;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(150deg, var(--app-sky), #1d80c0);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 22px -12px rgba(56, 189, 248, 0.6);
+}
+
+/* ---- Community Q&A mockup ---- */
+
+.mockup-community {
+  background:
+    radial-gradient(420px 220px at 100% 0%, rgba(14, 156, 119, 0.16), transparent 60%),
+    linear-gradient(180deg, var(--app-panel-start), var(--app-panel-end));
+}
+
+.mockup-community .mockup-q-header {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mockup-community .mockup-avatar {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, var(--accent), var(--accent-deep));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px -8px var(--accent-ring);
+}
+
+.mockup-community .mockup-q-meta strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--app-chrome-fg);
+  letter-spacing: -0.01em;
+}
+
+.mockup-community .mockup-q-meta small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--app-panel-sub);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mockup-community .mockup-q-badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--app-sky);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mockup-community .mockup-q-title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.mockup-community .mockup-q-body {
+  margin: 0 0 14px;
+  color: var(--app-panel-sub);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.mockup-community .mockup-q-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.mockup-community .mockup-q-tags span {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  color: #c7d4e3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mockup-community .mockup-q-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mockup-community .mockup-q-stat {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--app-panel-sub);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mockup-community .mockup-q-stat svg {
+  width: 14px; height: 14px;
+}
+
+.mockup-community .mockup-q-stat.is-accent {
+  color: #4ade80;
 }
 
 .workflow-list {
